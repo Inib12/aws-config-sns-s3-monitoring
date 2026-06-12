@@ -5,19 +5,19 @@
 
 ---
 
-## Situation
+## The Problem
 
-Public S3 buckets are one of the most common causes of cloud data breaches. In an AWS environment without automated compliance monitoring, a misconfigured S3 bucket, made publicly accessible either accidentally or maliciously — can go undetected for hours or days. Manual auditing is not scalable and leaves a dangerous detection gap.
-
----
-
-## Task
-
-Configure an automated, real-time monitoring and alerting system on AWS that would detect the moment any S3 bucket became publicly accessible and immediately notify a designated security contact via email — without requiring manual checks or dashboard monitoring.
+Public S3 buckets are one of the most common causes of cloud data breaches. In an AWS environment without automated compliance monitoring, a misconfigured S3 bucket, made publicly accessible either accidentally or maliciously, can go undetected for hours or days. Manual auditing is not scalable and leaves a dangerous detection gap.
 
 ---
 
-## Action
+## Goal
+
+Configure an automated, real-time monitoring and alerting system on AWS that would detect the moment any S3 bucket became publicly accessible and immediately notify a designated security contact via email, without requiring manual checks or dashboard monitoring.
+
+---
+
+## Approach
 
 - **Configured AWS Config** with continuous recording across all resource types, applying the managed rule `s3-bucket-public-read-prohibited` to evaluate S3 bucket compliance on an ongoing basis
 - **Created an SNS topic** (`SecurityAlertsTopic`) with an email subscription, confirming the endpoint to activate notification delivery
@@ -28,18 +28,9 @@ Configure an automated, real-time monitoring and alerting system on AWS that wou
 
 ---
 
-## Result
+## Outcome
 
 - **Real-time detection achieved:** AWS Config flagged the non-compliant S3 bucket within minutes of the public access policy being applied
 - **Automated alerting confirmed:** SNS delivered an email notification containing the full compliance change record, including the affected resource ID, region, compliance type, and timestamps
 - **Full audit trail established:** The AWS Config resource timeline captured every configuration change event, providing forensic-level visibility into when the bucket became public and when it was remediated
 - **Zero manual intervention required:** The entire detect-and-alert pipeline operated automatically from misconfiguration to notification
-
----
-
-## Key Concepts Demonstrated
-
-- Continuous compliance monitoring using AWS Config managed rules
-- Event-driven alerting architecture with SNS
-- S3 bucket policy misconfiguration and remediation
-- Cloud security audit trail and forensic investigation using resource timelines
