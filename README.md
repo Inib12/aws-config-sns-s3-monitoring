@@ -5,13 +5,13 @@
 
 ---
 
-## The Problem
+## Background
 
 Public S3 buckets are one of the most common causes of cloud data breaches. In an AWS environment without automated compliance monitoring, a misconfigured S3 bucket, made publicly accessible either accidentally or maliciously, can go undetected for hours or days. Manual auditing is not scalable and leaves a dangerous detection gap.
 
 ---
 
-## Goal
+## Objective
 
 Configure an automated, real-time monitoring and alerting system on AWS that would detect the moment any S3 bucket became publicly accessible and immediately notify a designated security contact via email, without requiring manual checks or dashboard monitoring.
 
